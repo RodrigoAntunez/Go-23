@@ -8,7 +8,7 @@ type Persona struct {
 	Edad   int
 }
 
-//Crear metodos desde la estructura persona
+//Crear METODOS desde la estructura persona
 
 //Metodo para imprimir los datos de la persona
 func (p *Persona) imprimir() {
@@ -18,6 +18,12 @@ func (p *Persona) imprimir() {
 // Metodo para modicar el nombre de la persona y no hacerlo de forma explicita
 func (p *Persona) modificarNombre(nombre string) {
 	p.Nombre = nombre
+}
+
+//HERENCIA
+
+type Empleado struct {
+	Persona
 }
 
 //Crear objetos desde la estructura persona
@@ -39,4 +45,9 @@ func main() {
 	}
 	//fmt.Println(persona2)
 	persona2.imprimir()
+
+	Empleado1 := Empleado{}
+	Empleado1.Nombre = "Agustin"
+	Empleado1.Edad = 23
+	Empleado1.imprimir()
 }
