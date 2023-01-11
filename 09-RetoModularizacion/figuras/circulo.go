@@ -1,4 +1,4 @@
-package circulo
+package figuras
 
 import (
 	"math"

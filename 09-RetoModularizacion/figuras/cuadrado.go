@@ -1,4 +1,4 @@
-package cuadrado
+package figuras
 
 type Cuadrado struct {
 	Lado float64

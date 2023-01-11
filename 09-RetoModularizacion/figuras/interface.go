@@ -1,4 +1,4 @@
-package interfaceP
+package figuras
 
 import "fmt"
 
