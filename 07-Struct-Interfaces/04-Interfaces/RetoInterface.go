@@ -1,11 +1,11 @@
 package main
 
-type Cuadrado interface {
+type Circle interface {
 	area() float64
 	perimetro() float64
 }
 
-type Circulo interface {
+type Square interface {
 	area() float64
 	perimetro() float64
 }
@@ -36,11 +36,11 @@ func (c circle) Perimetro() float64 {
 }
 
 func main() {
-	mySquare := square{sideLength: 10}
-	area := mySquare.Area()
-	perimetro := mySquare.Perimetro()
+	// mySquare := square{sideLength: 10}
+	// area := mySquare.Area()
+	// perimetro := mySquare.Perimetro()
 
-	myCircle := circle{radius: 10}
-	area := myCircle.Area()
-	perimetro := myCircle.Perimetro()
+	// myCircle := circle{radius: 10}
+	// area := myCircle.Area()
+	// perimetro := myCircle.Perimetro()
 }
