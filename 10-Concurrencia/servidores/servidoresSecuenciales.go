@@ -31,7 +31,7 @@ func main() {
 	}
 
 	for _, servidor := range servidores {
-		obversarServidor(servidor)
+		go obversarServidor(servidor)
 	}
 
 	tiempoPaso := time.Since(inicio)
