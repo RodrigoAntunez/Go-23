@@ -50,3 +50,22 @@ func TestGetMax(t *testing.T) {
 		}
 	}
 }
+
+func TestFibonacci(t *testing.T) {
+	tabla := []struct {
+		n int
+		r int
+	}{
+		{1, 1},
+		{8, 21},
+		{50, 12586269025},
+	}
+
+	for _, item := range tabla {
+		fibo := Fibonacci(item.n)
+
+		if fibo != item.r {
+			t.Errorf("El fibonacci de %d debe ser %d, pero fue %d", item.n, item.r, fibo)
+		}
+	}
+}
