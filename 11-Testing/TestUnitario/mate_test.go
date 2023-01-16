@@ -29,3 +29,24 @@ func TestSuma(t *testing.T) {
 		}
 	}
 }
+
+func TestGetMax(t *testing.T) {
+	tabla := []struct {
+		a int
+		b int
+		c int
+	}{
+		{1, 2, 2},
+		{5, 2, 5},
+		{10, 4, 10},
+		{2, 4, 4},
+	}
+
+	for _, item := range tabla {
+		max := GetMax(item.a, item.b)
+
+		if max != item.c {
+			t.Errorf("El mayor entre %d y %d debe ser %d, pero fue %d", item.a, item.b, item.c, max)
+		}
+	}
+}
