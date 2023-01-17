@@ -8,6 +8,7 @@ import (
 
 // Handler:
 func Hola(rw http.ResponseWriter, r *http.Request) {
+	fmt.Println("El metodo HTTP es: ", r.Method) // Para saber si es un get o un post
 	fmt.Fprintln(rw, "Hola Mundo desde un Handler")
 }
 
@@ -15,11 +16,20 @@ func Chau(rw http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(rw, "Chau Mundo desde un Handler")
 }
 
+func PaginaNTF(rw http.ResponseWriter, r *http.Request) {
+	http.NotFound(rw, r)
+}
+
+func Error(rw http.ResponseWriter, r *http.Request) {
+	http.Error(rw, "Error interno del servidor", http.StatusNotFound)
+} //Este es un paquete de Go
+
 func main() {
 
 	//Router
 	http.HandleFunc("/", Hola)
 	http.HandleFunc("/chau", Chau)
+	http.HandleFunc("/ntf", PaginaNTF)
 
 	//Crear un servidor web
 	//http.ListenAndServe("localhost:8080", nil)
