@@ -11,10 +11,15 @@ func Hola(rw http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(rw, "Hola Mundo desde un Handler")
 }
 
+func Chau(rw http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(rw, "Chau Mundo desde un Handler")
+}
+
 func main() {
 
 	//Router
 	http.HandleFunc("/", Hola)
+	http.HandleFunc("/chau", Chau)
 
 	//Crear un servidor web
 	//http.ListenAndServe("localhost:8080", nil)
