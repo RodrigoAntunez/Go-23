@@ -25,17 +25,28 @@ func Error(rw http.ResponseWriter, r *http.Request) {
 } //Este es un paquete de Go
 
 func main() {
+	// Mux
+	//Mux: Es el encargado de recibir las peticiones y enviarlas a un Handler
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", Hola)
+	mux.HandleFunc("/chau", Chau)
+	mux.HandleFunc("/ntf", PaginaNTF)
 
 	//Router
-	http.HandleFunc("/", Hola)
-	http.HandleFunc("/chau", Chau)
-	http.HandleFunc("/ntf", PaginaNTF)
+	// http.HandleFunc("/", Hola)
+	// http.HandleFunc("/chau", Chau)
+	// http.HandleFunc("/ntf", PaginaNTF)
 
 	//Crear un servidor web
 	//http.ListenAndServe("localhost:8080", nil)
+	server := &http.Server{
+		Addr:    "localhost:3000",
+		Handler: mux,
+	}
 	fmt.Println("El Servidor web esta en el puerto http://localhost:3000")
 	fmt.Println("Run server: http://localhost:3000/")
-	log.Fatal(http.ListenAndServe("localhost:3000", nil))
+	//log.Fatal(http.ListenAndServe("localhost:3000", mux))
+	log.Fatal(server.ListenAndServe())
 
 	// Router y Handler
 	//Router: Es el encargado de recibir las peticiones y enviarlas a un Handler
