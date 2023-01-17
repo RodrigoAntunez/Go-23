@@ -9,7 +9,7 @@ import (
 // Handler:
 func Hola(rw http.ResponseWriter, r *http.Request) {
 	fmt.Println("El metodo HTTP es: ", r.Method) // Para saber si es un get o un post
-	fmt.Fprintln(rw, "Hola Mundo desde un Handler")
+	fmt.Fprintln(rw, "Hola Mundo de Goweb")
 }
 
 func Chau(rw http.ResponseWriter, r *http.Request) {
