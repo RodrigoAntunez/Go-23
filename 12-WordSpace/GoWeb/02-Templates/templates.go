@@ -7,15 +7,24 @@ import (
 	"net/http"
 )
 
+// Estructuras de datos
+type User struct {
+	Name string
+	Age  int
+}
+
 // Handler de la pagina principal
 // Esta funcion se encarga de renderizar el template index.html
 func Index(rw http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Hola mundo")
 	template, err := template.ParseFiles("index.html")
+
+	usuario := User{"Rodri", 25}
+
 	if err != nil {
 		panic(err)
 	} else {
-		template.Execute(rw, nil)
+		template.Execute(rw, usuario)
 	}
 }
 
