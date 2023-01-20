@@ -9,8 +9,10 @@ import (
 
 // Estructuras de datos
 type User struct {
-	Name string
-	Age  int
+	Name   string
+	Age    int
+	Activo bool
+	Admin  bool
 }
 
 // Handler de la pagina principal
@@ -19,7 +21,7 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Hola mundo")
 	template, err := template.ParseFiles("index.html")
 
-	usuario := User{"Rodri", 25}
+	usuario := User{"Rodri", 25, true, false}
 
 	if err != nil {
 		panic(err)
