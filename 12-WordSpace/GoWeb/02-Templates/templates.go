@@ -13,18 +13,17 @@ func Saludar(name string) string {
 }
 
 // Estructuras de datos
-/*type User struct {
-	Name   string
-	Age    int
-	Activo bool
-	Admin  bool
-	Cursos []Curso
+type User struct {
+	Name string
+	Age  int
+	//Activo bool
+	//Admin  bool
+	//Cursos []Curso
 }
 
-type Curso struct {
-	Nombre string
-}
-*/
+// type Curso struct {
+// 	Nombre string
+// }
 
 // Handler de la pagina principal
 // Esta funcion se encarga de renderizar el template index.html
@@ -36,20 +35,19 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	// c4 := Curso{"C++"}
 
 	//FUNCIONES, aca van todas las funciones
-	funciones := template.FuncMap{
-		"saludar": Saludar,
-	}
+	// funciones := template.FuncMap{
+	// 	"saludar": Saludar,
+	// }
 
-	template, err := template.New("indexIterador.html").Funcs(funciones).
-		ParseFiles("indexIterador.html")
+	template, err := template.ParseFiles("indexIterador.html", "base.html")
 
 	// cursos := []Curso{c1, c2, c3, c4}
-	// usuario := User{"Rodri Agustin", 20, true, false, cursos}
+	usuario := User{"Rodri Agustin", 20}
 
 	if err != nil {
 		panic(err)
 	} else {
-		template.Execute(rw, nil)
+		template.Execute(rw, usuario)
 	}
 }
 

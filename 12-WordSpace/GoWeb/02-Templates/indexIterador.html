@@ -8,7 +8,10 @@
 </head>
 <body>
 
-     <p> {{saludar "Rodri"}}</p>
+    {{template "header"}}
+     <h3>Hola {{.Name}}</h3>
+     <p>Edad {{.Age}}</p>
+     {{template "footer"}}
 
 </body>
 </html>
