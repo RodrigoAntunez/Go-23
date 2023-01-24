@@ -7,8 +7,13 @@ import (
 	"net/http"
 )
 
+//FUNCIONES
+func Saludar(name string) string {
+	return "Hola desde una funcion " + name
+}
+
 // Estructuras de datos
-type User struct {
+/*type User struct {
 	Name   string
 	Age    int
 	Activo bool
@@ -19,25 +24,32 @@ type User struct {
 type Curso struct {
 	Nombre string
 }
+*/
 
 // Handler de la pagina principal
 // Esta funcion se encarga de renderizar el template index.html
 func Index(rw http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Hola mundo")
-	c1 := Curso{"Go"}
-	c2 := Curso{"Python"}
-	c3 := Curso{"Java"}
-	c4 := Curso{"C++"}
+	// c1 := Curso{"Go"}
+	// c2 := Curso{"Python"}
+	// c3 := Curso{"Java"}
+	// c4 := Curso{"C++"}
 
-	template, err := template.ParseFiles("indexIterador.html")
+	//FUNCIONES, aca van todas las funciones
+	funciones := template.FuncMap{
+		"saludar": Saludar,
+	}
 
-	cursos := []Curso{c1, c2, c3, c4}
-	usuario := User{"Rodri Agustin", 20, true, false, cursos}
+	template, err := template.New("indexIterador.html").Funcs(funciones).
+		ParseFiles("indexIterador.html")
+
+	// cursos := []Curso{c1, c2, c3, c4}
+	// usuario := User{"Rodri Agustin", 20, true, false, cursos}
 
 	if err != nil {
 		panic(err)
 	} else {
-		template.Execute(rw, usuario)
+		template.Execute(rw, nil)
 	}
 }
 
