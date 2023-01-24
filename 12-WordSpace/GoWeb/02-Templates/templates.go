@@ -13,15 +13,26 @@ type User struct {
 	Age    int
 	Activo bool
 	Admin  bool
+	Cursos []Curso
+}
+
+type Curso struct {
+	Nombre string
 }
 
 // Handler de la pagina principal
 // Esta funcion se encarga de renderizar el template index.html
 func Index(rw http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Hola mundo")
-	template, err := template.ParseFiles("index.html")
+	c1 := Curso{"Go"}
+	c2 := Curso{"Python"}
+	c3 := Curso{"Java"}
+	c4 := Curso{"C++"}
 
-	usuario := User{"Rodri Agustin", 20, true, false}
+	template, err := template.ParseFiles("indexIterador.html")
+
+	cursos := []Curso{c1, c2, c3, c4}
+	usuario := User{"Rodri Agustin", 20, true, false, cursos}
 
 	if err != nil {
 		panic(err)
