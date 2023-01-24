@@ -21,7 +21,7 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Hola mundo")
 	template, err := template.ParseFiles("index.html")
 
-	usuario := User{"Rodri Agustin", 24, true, true}
+	usuario := User{"Rodri Agustin", 20, true, false}
 
 	if err != nil {
 		panic(err)

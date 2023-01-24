@@ -7,17 +7,27 @@
     <title>Index</title>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
-    <p>Este es un párrafo</p>
-    <h3>Hola mi nombre es {{.Name}}</h3>  retorna el valor de la estrucura User 
-    <h4>Y tengo {{.Age}}</h4>
+    <h1>Usuarios</h1>
 
     <!-- 
         OPERADORES LOGICOS  
         not     !
         and     &&
         or      ||
+    -->
 
+    {{if  .Activo }}
+    <p>El usuario esta activo en la plataforma</p>
+    {{else}}
+    <p>El usuario no esta activo en la plataforma</p>
+    {{end}}
+
+    {{if and .Activo .Admin}}
+    <p>Eres administrador</p>
+    {{end}}
+    
+
+    <!--
         OPERADORES DE COMPARACION
         eq     ==
         ne     !=
@@ -26,6 +36,14 @@
         >    gt
         >=   ge   
     -->
+
+    {{if gt .Age 18 }}
+    <p>El usuario es mayor de edad</p>
+    {{else}}
+    <p>El usuario es menor de edad</p>
+    {{end}}
+
+    
 
 </body>
 </html>
