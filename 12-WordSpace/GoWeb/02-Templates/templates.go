@@ -25,6 +25,8 @@ type User struct {
 // 	Nombre string
 // }
 
+var templates = template.Must(template.ParseFiles("indexIterador.html", "base.html"))
+
 // Handler de la pagina principal
 // Esta funcion se encarga de renderizar el template index.html
 func Index(rw http.ResponseWriter, r *http.Request) {
@@ -41,7 +43,7 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 
 	// MUST, si hay un error en el template, se rompe la aplicacion. Tambien sirve para no trabajar con el error en los handlers
 
-	template := template.Must(template.ParseFiles("indexIterador.html", "base.html"))
+	//template := template.Must(template.ParseFiles("indexIterador.html", "base.html"))
 
 	// cursos := []Curso{c1, c2, c3, c4}
 	usuario := User{"Rodri Agustin", 20}
@@ -49,8 +51,12 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	// if err != nil {
 	// 	panic(err)
 	// } else {
-	template.Execute(rw, usuario)
+	err := templates.ExecuteTemplate(rw, "indexIterador.html", usuario)
 	// }
+
+	if err != nil {
+		panic(err)
+	}
 }
 
 func main() {
