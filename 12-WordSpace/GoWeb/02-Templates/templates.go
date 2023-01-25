@@ -39,16 +39,18 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	// 	"saludar": Saludar,
 	// }
 
-	template, err := template.ParseFiles("indexIterador.html", "base.html")
+	// MUST, si hay un error en el template, se rompe la aplicacion. Tambien sirve para no trabajar con el error en los handlers
+
+	template := template.Must(template.ParseFiles("indexIterador.html", "base.html"))
 
 	// cursos := []Curso{c1, c2, c3, c4}
 	usuario := User{"Rodri Agustin", 20}
 
-	if err != nil {
-		panic(err)
-	} else {
-		template.Execute(rw, usuario)
-	}
+	// if err != nil {
+	// 	panic(err)
+	// } else {
+	template.Execute(rw, usuario)
+	// }
 }
 
 func main() {
