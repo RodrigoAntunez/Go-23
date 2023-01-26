@@ -70,7 +70,7 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	// } else {
 	// }
 
-	RenderTemplate(rw, "indexIterado.html", usuario)
+	RenderTemplate(rw, "indexIterador.html", usuario)
 }
 
 func Registro(rw http.ResponseWriter, r *http.Request) {
