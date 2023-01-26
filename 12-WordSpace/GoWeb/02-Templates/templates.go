@@ -27,6 +27,16 @@ type User struct {
 
 var templates = template.Must(template.ParseGlob("templates/**/*.html"))
 
+func RenderTemplate(rw http.ResponseWriter, name string, data interface{}) {
+
+	err := templates.ExecuteTemplate(rw, name, data)
+
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 // Handler de la pagina principal
 // Esta funcion se encarga de renderizar el template index.html
 func Index(rw http.ResponseWriter, r *http.Request) {
@@ -51,21 +61,14 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	// if err != nil {
 	// 	panic(err)
 	// } else {
-	err := templates.ExecuteTemplate(rw, "indexIterador.html", usuario)
 	// }
 
-	if err != nil {
-		panic(err)
-	}
+	RenderTemplate(rw, "indexIterador.html", usuario)
 }
 
 func Registro(rw http.ResponseWriter, r *http.Request) {
 
-	err := templates.ExecuteTemplate(rw, "registro.html", nil)
-
-	if err != nil {
-		panic(err)
-	}
+	RenderTemplate(rw, "registro.html", nil)
 
 }
 
