@@ -26,13 +26,20 @@ type User struct {
 // }
 
 var templates = template.Must(template.ParseGlob("templates/**/*.html"))
+var errorTemplate = template.Must(template.ParseFiles("templates/Error/error.html"))
+
+func handlerErro(rw http.ResponseWriter, status int) {
+	rw.WriteHeader(status)
+	errorTemplate.Execute(rw, nil)
+}
 
 func RenderTemplate(rw http.ResponseWriter, name string, data interface{}) {
 
 	err := templates.ExecuteTemplate(rw, name, data)
 
 	if err != nil {
-		panic(err)
+		//http.Error(rw, "No es posible retornar el template", http.StatusInternalServerError)
+		handlerErro(rw, http.StatusInternalServerError)
 	}
 
 }
@@ -63,7 +70,7 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	// } else {
 	// }
 
-	RenderTemplate(rw, "indexIterador.html", usuario)
+	RenderTemplate(rw, "indexIterado.html", usuario)
 }
 
 func Registro(rw http.ResponseWriter, r *http.Request) {
