@@ -25,7 +25,7 @@ type User struct {
 // 	Nombre string
 // }
 
-var templates = template.Must(template.ParseFiles("indexIterador.html", "base.html"))
+var templates = template.Must(template.ParseGlob("templates/**/*.html"))
 
 // Handler de la pagina principal
 // Esta funcion se encarga de renderizar el template index.html
@@ -59,10 +59,21 @@ func Index(rw http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func Registro(rw http.ResponseWriter, r *http.Request) {
+
+	err := templates.ExecuteTemplate(rw, "registro.html", nil)
+
+	if err != nil {
+		panic(err)
+	}
+
+}
+
 func main() {
 	//Mux
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", Index)
+	mux.HandleFunc("/registro", Registro)
 
 	//Servidor
 	server := &http.Server{
