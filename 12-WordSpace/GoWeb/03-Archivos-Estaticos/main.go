@@ -81,7 +81,7 @@ func Registro(rw http.ResponseWriter, r *http.Request) {
 
 func main() {
 	//ARCHIVOS ESTATICOS
-	staticFile := http.FileServer(http.Dir("static")) //Ruta de los archivos estaticos
+	staticFile := http.FileServer(http.Dir("statics")) //Ruta de los archivos estaticos
 
 	//Mux
 	mux := http.NewServeMux()
