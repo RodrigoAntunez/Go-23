@@ -34,3 +34,9 @@ func Ping() {
 	}
 	fmt.Println("Conexion activa")
 }
+
+//crea la tabla
+
+func CreateTable(schema string) {
+	db.Exec(schema) //ejecuta el esquema de la tabla
+}
