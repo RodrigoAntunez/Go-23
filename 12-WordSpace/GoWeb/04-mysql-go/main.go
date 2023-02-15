@@ -9,6 +9,6 @@ func main() {
 	// ...
 	db.Connect()
 	db.CreateTable(models.UserSchema) //crea la tabla
-	//db.Ping()
+	db.Ping()
 	db.Close()
 }
