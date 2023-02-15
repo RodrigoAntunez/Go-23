@@ -8,6 +8,7 @@ import (
 )
 
 //usarname:password@tcp(localhost:3306)/datbase
+//user:123456@tcp(127.0.0.1:3306)/goweb_db
 const url = "root:Sql2022@tcp(localhost:3306)/goweb_db" //url de conexion a la base de datos
 // Guarda la conexion
 var db *sql.DB
